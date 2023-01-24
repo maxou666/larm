@@ -117,6 +117,8 @@ class MoveNode(Node):
         self.get_logger().info(f"{velo.angular.z}")
 
     def video(self, data):
+        self.t = []
+        self.r = []
         for i in range(3):
             self.t.append(0)
             self.r.append(0)
