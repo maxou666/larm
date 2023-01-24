@@ -18,32 +18,23 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([tbot_start_launch_dir, '/full.launch.py']),
 
             ),
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([launch_file_dir, '/challenge.launch.py']),
-
-            ),
+        
         
         Node(
 
-            package = 'challenge1',
+            package = 'challenge2',
             executable='scan_echo',
             name='teleop',
             prefix='gnome-terminal -x',
         ),
         Node(
 
-            package = 'challenge1',
-            executable='oscar',
+            package = 'challenge2',
+            executable='tintin',
             name='teleop',
             prefix='gnome-terminal -x',
         ),
-        Node(
-
-            package = 'challenge1',
-            executable='reactive_move',
-            name='teleop',
-            prefix='gnome-terminal -x',
-        ),
+        
         Node(
 
             package = 'teleop_twist_keyboard',
