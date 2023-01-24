@@ -8,7 +8,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
-    tbot_sim_path = get_package_share_directory('tbot_sim')
+    tbot_sim_path = get_package_share_directory('slam_toolbox')
     launch_file_dir = os.path.join(tbot_sim_path, 'launch','includes')
     tbot_start_path = get_package_share_directory('tbot_start')
     tbot_start_launch_dir = os.path.join(tbot_start_path, 'launch')
@@ -16,6 +16,11 @@ def generate_launch_description():
     
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([tbot_start_launch_dir, '/full.launch.py']),
+
+            ),
+        
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([launch_file_dir, '/online_sync_launch.py']),
 
             ),
         
