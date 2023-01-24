@@ -245,7 +245,7 @@ class MoveNode(Node):
         elif (self.t[1] > 10):
             # print("tire")
             print("bouteille orange ?")
-            msg="bouteille orange ?"
+            msg.data="bouteille orange ?"
             self.tire = 1
             for y in range(cols):
 
