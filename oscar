@@ -114,6 +114,7 @@ class MoveNode(Node):
         self.velocity_publisher.publish(velo)
 
     def video(self, data):
+        msg=String()
         self.t = []
         self.r = []
         for i in range(3):
@@ -237,7 +238,7 @@ class MoveNode(Node):
         elif (self.t[1] >= 10 and self.t[0] > (self.t[2] + 20 + self.t[1])):
             # print("tourne a doite")
             print("bouteille orange ?")
-            msg = "bouteille orange ?"
+            msg.data = "bouteille orange ?"
 
             # deplace robot à droite
 
@@ -252,12 +253,12 @@ class MoveNode(Node):
                     self.av += 1
             if (self.av > 10):
                 print("bouteille orange ?")# else:
-                msg = "bouteille orange ?"
+                msg.data = "bouteille orange ?"
             #  velo.linear.x=0.2
 
         if (self.r[1] > 10):
             print("bouteille rouge ?")
-            msg = "bouteille rouge ?"
+            msg.data = "bouteille rouge ?"
 
             # calculer depth du point central
             # retransformer la couleur en distance
