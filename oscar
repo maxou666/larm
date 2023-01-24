@@ -114,7 +114,7 @@ class MoveNode(Node):
         self.velocity_publisher.publish(velo)
 
     def video(self, data):
-        msg=String()
+        msg= String()
         self.t = []
         self.r = []
         for i in range(3):
@@ -234,7 +234,7 @@ class MoveNode(Node):
             # print("tourne a gauche")
             print("bouteille orange ?")
 
-            msg="bouteille orange ?"
+            msg.data="bouteille orange ?"
         elif (self.t[1] >= 10 and self.t[0] > (self.t[2] + 20 + self.t[1])):
             # print("tourne a doite")
             print("bouteille orange ?")
