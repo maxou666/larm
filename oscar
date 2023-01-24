@@ -268,7 +268,6 @@ class MoveNode(Node):
 
         hsvt = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
         cv2.imshow('eza', cv_image)
-        cv2.waitKey(3)
 
 def main(args=None):
     rclpy.init(args=args)
