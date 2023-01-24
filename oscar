@@ -41,7 +41,6 @@ class MoveNode(Node):
         for k in range(10):
             tab_val.append(0)
 
-        self.get_logger().info(f"{len(self.premiere)}")
         n = len(self.premiere) - 1
         velo = Twist()
         velo.angular.z = self.rep
@@ -72,7 +71,6 @@ class MoveNode(Node):
         if (tab_val[0] > 30):
 
             velo.linear.x = 0.0  # target a 0 meter per second velocity
-            self.get_logger().info(f"{velo.angular.z} import")
             if (tab_val[2] < tab_val[1] and velo.angular.z >= 0.0):
                 velo.angular.z = 1.0
                 self.rep = 1.0
@@ -85,7 +83,6 @@ class MoveNode(Node):
         elif (tab_val[3] > 30):
 
             velo.linear.x = 0.2  # target a 0 meter per second velocity
-            self.get_logger().info(f"{velo.angular.z} import")
             if (tab_val[5] < tab_val[4] and velo.angular.z >= 0.0):
                 velo.angular.z = 0.6
                 self.rep = 0.6
@@ -97,7 +94,6 @@ class MoveNode(Node):
         elif (tab_val[6] > 30):
 
             velo.linear.x = 0.3  # target a 0 meter per second velocity
-            self.get_logger().info(f"{velo.angular.z} import")
             if (tab_val[8] < tab_val[7] and velo.angular.z != 1.0 and velo.angular.z != -1.0):
                 velo.angular.z = 0.3
                 self.rep = 0.3
@@ -111,10 +107,8 @@ class MoveNode(Node):
 
             velo.angular.z = 0.0
 
-            self.get_logger().info(f"{velo.angular.z} j'avance")
         self.rep = velo.angular.z
         self.velocity_publisher.publish(velo)
-        self.get_logger().info(f"{velo.angular.z}")
 
     def video(self, data):
         self.t = []
