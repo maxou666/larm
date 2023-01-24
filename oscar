@@ -20,6 +20,7 @@ class MoveNode(Node):
     def __init__(self):
         super().__init__('move')
         self.velocity_publisher = self.create_publisher(Twist, '/multi/cmd_nav', 10)
+        self.bouteille_publisher = self.create_publisher(String, 'bottle_detection', 10)
         self.create_subscription(PointCloud, 'point', self.scan_callback, 10)
         self.bridge = CvBridge()
         self.create_subscription(Image, 'img', self.video, 10)
@@ -182,7 +183,7 @@ class MoveNode(Node):
         contoursi, hierarchy = cv2.findContours(edge_detected_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         contour_list = []
-        for contour in contoursi:
+        for contour in contours2:
             approx = cv2.approxPolyDP(contour, 0.01 * cv2.arcLength(contour, True), True)
             area = cv2.contourArea(contour)
             if ((len(approx) > 8) & (len(approx) < 23) & (area > 30)):
@@ -230,33 +231,37 @@ class MoveNode(Node):
             # print("tourne a gauche")
             print("bouteille orange ?")
 
-            print("bouteille orange ?")
+            msg="bouteille orange ?"
         elif (self.t[1] >= 10 and self.t[0] > (self.t[2] + 20 + self.t[1])):
             # print("tourne a doite")
             print("bouteille orange ?")
+            msg = "bouteille orange ?"
 
             # deplace robot à droite
 
         elif (self.t[1] > 10):
             # print("tire")
             print("bouteille orange ?")
+            msg="bouteille orange ?"
             self.tire = 1
             for y in range(cols):
 
                 if (cv_image[-1, y][0] == 0 and cv_image[-1, y][1] == 255 and cv_image[-1, y][2] == 0):
                     self.av += 1
             if (self.av > 10):
-                print("bouteille rouge ?")# else:
-
+                print("bouteille orange ?")# else:
+                msg = "bouteille orange ?"
             #  velo.linear.x=0.2
 
         if (self.r[1] > 10):
             print("bouteille rouge ?")
+            msg = "bouteille rouge ?"
 
             # calculer depth du point central
             # retransformer la couleur en distance
         else:
             self.old = 0.0
+        self.bouteille_publisher.publish(msg)
 
         hsvt = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
         cv2.imshow('eza', cv_image)
