@@ -23,9 +23,15 @@ Le robot est equipe d'un hokuyo 2D lidar et d'une camera realsens RGBD d435i
 
 ## Strategie challenge 1
 
+La strategie consiste à utiliser le LIDAR du robot afin de localiser les obstacles dans une pièce et de les éviter.
+
 ## Strategie challenge 2
 
+La stratégie consiste à détecter les bouteilles oranges par colorimétrie en appliquant un masque sur un intervalle colorimétrique correponsant.
+
 ## Strategie challenge 3
+
+La stratégie consiste à positionner le robot dans l'axe de la bouteille et d'ensuite évaluer la distance en utilisant la caméra de profondeur.
  
 ## Pistes d'amelioration
 Le projet reste incomplet avec plusieurs axes d'amelioration possibles.
