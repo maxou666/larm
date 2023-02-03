@@ -19,7 +19,9 @@ Le robot est equipe d'un hokuyo 2D lidar et d'une camera realsens RGBD d435i
 2. Cloner le repertoire groupe
 3. Faire un ```colcon build```
 4. Faire un ```source install/setup.sh```
-5. Lancer la demonstration ```ros2 launch challenge1```
+5. Lancer la base, le laser et la caméra via la commande ```ros2 launch tbot_start full.launch.py```
+6. Executer la visualisation des frames ```ros2 run tf2_tools view_frames.py```
+7. Lancer la demonstration ```ros2 launch challenge1```
 
 ## Strategie challenge 1
 
@@ -39,8 +41,6 @@ Le projet reste incomplet avec plusieurs axes d'amelioration possibles.
 - Realiser le challenge 3. Il n'a pas pu etre realise par manque de temps. Il consiste a estimer la distance des bouteilles reperees et de placer repere sur la carte.
 - Ameliorer la detection des bouteilles de nuke cola, notamment pour eviter les faux positifs.
 - Utiliser le teleop pour faire controler le robot en plus de son fonctionnement autonome.
-
-
 
 ## Credits
 Projet realise par Maxence Cockedey et Oscar Letzgus
